@@ -6,7 +6,9 @@ var locations = JSON.parse(fs.readFileSync('locations.json', 'ascii'));
 
 app.get('/', function (req, res)
 {
-   res.send('To use, send in a request with coordinates. For example, /40.672/-74.520');
+   res.send({
+      "error": "Expecting coordinates. (/:lat/:lng)"
+   });
 });
 
 app.get('/:lat/:lng', function (req, res)
