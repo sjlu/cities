@@ -39,8 +39,6 @@ exports.gps_lookup = function(lat, lng)
       {
          min_location = locations[i];
          min_distance = distance;
-
-         console.log(min_location);
       }
    }
 
