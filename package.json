@@ -6,11 +6,14 @@
   "dependencies": {
     "express": "3.x"
   },
+  "devDependencies": {
+    "mocha": "1.8.x"
+  },
   "main": "app.js",
   "repository": "https://github.com/sjlu/cities",
   "scripts": {
     "start": "server.js",
-    "test": "mocha"
+    "test": "make test"
   },
   "engines": {
     "node": "0.8.x"
