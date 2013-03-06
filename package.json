@@ -1,7 +1,7 @@
 {
   "name": "cities",
   "description": "Lookup cities based on zipcodes or GPS coordinates.",
-  "version": "1.0.3",
+  "version": "1.0.3-1",
   "author": "Steven Lu <slu@me.com>",
   "dependencies": {
     "express": "3.x"
