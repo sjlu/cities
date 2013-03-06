@@ -25,14 +25,14 @@ Easy. Require `"cities": "1.x"` in `package.json`.
 
 A sample response or object that this module returns looks like this.
 
-   {
-      zipcode: "07946",
-      state_abbr: "NJ",
-      latitude: "40.672823",
-      longitude: "-74.52011",
-      city: "Millington",
-      state: "New Jersey"
-   }
+    {
+        zipcode: "07946",
+        state_abbr: "NJ",
+        latitude: "40.672823",
+        longitude: "-74.52011",
+        city: "Millington",
+        state: "New Jersey"
+    }
 
 ## License
 
