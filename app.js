@@ -4,18 +4,17 @@ var app = express();
 
 var locations = JSON.parse(fs.readFileSync('locations.json', 'ascii'));
 
-app.get('/', function (req, res)
+exports.lookup = function(zip)
 {
-   res.send({
-      "error": "Expecting coordinates. (/:lat/:lng)"
-   });
-});
+   for (var i = 0; i < locations.length; i++)
+   {
+      if (locations[i].zipcode == zip)
+         return locations[i];
+   }
+}
 
-app.get('/:lat/:lng', function (req, res)
+exports.gps2zip = function(lat, lng)
 {
-   var lat = req.params.lat;
-   var lng = req.params.lng;
-
    var min_distance = 9999999999; // simulate infinity
    var min_location = {};
 
@@ -32,7 +31,22 @@ app.get('/:lat/:lng', function (req, res)
       }
    }
 
-   res.send(min_location);
+   return min_location;
+}
+
+app.get('/', function (req, res)
+{
+   res.send({
+      "error": "Expecting coordinates. (/:lat/:lng)"
+   });
+});
+
+app.get('/:lat/:lng', function (req, res)
+{
+   var lat = req.params.lat;
+   var lng = req.params.lng;
+
+   res.send(exports.gps2zip(lat, lng));
 });
 
 app.listen(4000);
