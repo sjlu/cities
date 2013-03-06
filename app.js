@@ -4,7 +4,7 @@ var app = express();
 
 var locations = JSON.parse(fs.readFileSync('locations.json', 'ascii'));
 
-exports.lookup = function(zip)
+exports.zip_lookup = function(zip)
 {
    for (var i = 0; i < locations.length; i++)
    {
@@ -13,7 +13,7 @@ exports.lookup = function(zip)
    }
 }
 
-exports.gps2zip = function(lat, lng)
+exports.gps_lookup = function(lat, lng)
 {
    var min_distance = 9999999999; // simulate infinity
    var min_location = {};
@@ -41,12 +41,19 @@ app.get('/', function (req, res)
    });
 });
 
-app.get('/:lat/:lng', function (req, res)
+app.get('/zip/:zip', function (req, res)
+{
+   var zip = req.params.zip;
+
+   res.send(exports.zip_lookup(zip));
+});
+
+app.get('/gps/:lat/:lng', function (req, res)
 {
    var lat = req.params.lat;
    var lng = req.params.lng;
 
-   res.send(exports.gps2zip(lat, lng));
+   res.send(exports.gps_lookup(lat, lng));
 });
 
 app.listen(4000);
