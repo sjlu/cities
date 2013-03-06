@@ -9,7 +9,8 @@
   "main": "app.js",
   "repository": "https://github.com/sjlu/cities",
   "scripts": {
-    "start": "server.js"
+    "start": "server.js",
+    "test": "mocha"
   },
   "engines": {
     "node": "0.8.x"
