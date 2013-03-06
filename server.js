@@ -5,7 +5,7 @@ var app = express();
 app.get('/', function (req, res)
 {
    res.send({
-      "error": "Expecting coordinates. (/:lat/:lng)"
+      "error": "Expecting input. (/zip/:zipcode) (/gps/:lat/:lng)"
    });
 });
 

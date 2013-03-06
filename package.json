@@ -1,17 +1,18 @@
 {
-   "name": "cities",
-   "description": "Lookup cities based on zipcodes or GPS coordinates.",
-   "version": "1.0.3",
-   "author": "Steven Lu <slu@me.com>",
-   "dependencies": {
-      "express": "3.x"
-   },
-   "main": "app.js",
-   "repository": "https://github.com/sjlu/cities",
-   "scripts": {
-      "start": "server.js"
-   },
-   "engines": {
-      "node": "0.8.x"
-   }
+  "name": "cities",
+  "description": "Lookup cities based on zipcodes or GPS coordinates.",
+  "version": "1.0.3",
+  "author": "Steven Lu <slu@me.com>",
+  "dependencies": {
+    "express": "3.x"
+  },
+  "main": "app.js",
+  "repository": "https://github.com/sjlu/cities",
+  "scripts": {
+    "start": "server.js"
+  },
+  "engines": {
+    "node": "0.8.x"
+  },
+  "subdomain": "sjlu.cities"
 }
