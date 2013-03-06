@@ -1,6 +1,6 @@
 {
-   "name": "zips",
-   "description": "GPS coordinates to US zip codes.",
+   "name": "locations",
+   "description": "Location lookups by GPS coordinates or US zipcodes.",
    "version": "1.0.0",
    "dependencies": {
       "express": "3.x"
