@@ -1,5 +1,5 @@
 var fs = require('fs');
-var locations = JSON.parse(fs.readFileSync('locations.json', 'ascii'));
+var locations = JSON.parse(fs.readFileSync(__dirname + '/locations.json', 'ascii'));
 
 var R = 6371;
 var haversine = function(lat1, lon1, lat2, lon2)
