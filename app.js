@@ -1,7 +1,4 @@
-var express = require('express');
 var fs = require('fs');
-var app = express();
-
 var locations = JSON.parse(fs.readFileSync('locations.json', 'ascii'));
 
 var R = 6371;
@@ -49,28 +46,3 @@ exports.gps_lookup = function(lat, lng)
 
    return min_location;
 }
-
-app.get('/', function (req, res)
-{
-   res.send({
-      "error": "Expecting coordinates. (/:lat/:lng)"
-   });
-});
-
-app.get('/zip/:zip', function (req, res)
-{
-   var zip = req.params.zip;
-
-   res.send(exports.zip_lookup(zip));
-});
-
-app.get('/gps/:lat/:lng', function (req, res)
-{
-   var lat = req.params.lat;
-   var lng = req.params.lng;
-
-   res.send(exports.gps_lookup(lat, lng));
-});
-
-app.listen(4000);
-console.log('http://localhost:4000');

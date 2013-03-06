@@ -1,8 +1,12 @@
 {
    "name": "cities",
-   "description": "City lookups by GPS coordinates or US zipcodes.",
+   "description": "Lookup cities based on zipcodes or GPS coordinates.",
    "version": "1.0.0",
+   "author": "Steven Lu <slu@me.com>",
    "dependencies": {
-      "express": "3.x"
-   }
+      "express": "3.x",
+      "cities": "1.x"
+   },
+   "main": "app.js",
+   "repository": "https://github.com/sjlu/cities"
 }
