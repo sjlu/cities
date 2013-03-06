@@ -4,7 +4,7 @@
    "version": "1.0.1",
    "author": "Steven Lu <slu@me.com>",
    "dependencies": {
-      "express": "3.x",
+      "express": "3.x"
    },
    "main": "app.js",
    "repository": "https://github.com/sjlu/cities"
