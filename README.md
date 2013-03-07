@@ -15,7 +15,7 @@ You can then visit `http://localhost:4000` with the endpoints `/gps/:lat/:lng` o
 
 ### Module
 
-Easy. Require `"cities": "1.x"` in `package.json`.
+Easy. Require `"cities": "1.x"` in `package.json`, then do `npm install`.
 
     var cities = require('cities');
     cities.gps_lookup(lat, lng);
