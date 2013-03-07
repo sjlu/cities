@@ -44,5 +44,6 @@ exports.gps_lookup = function(lat, lng)
       }
    }
 
+   min_location.distance = min_distance;
    return min_location;
 };
