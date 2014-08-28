@@ -1,6 +1,8 @@
 # Cities
 
-Cities is an easy to use Node.js library to allow you to lookup a city by it's zipcode or by a set of GPS coordinates.
+Cities is an easy to use Node.js library to allow you to lookup a city by it's zipcode or by a set of GPS coordinates (reverse geocoding).
+
+At the moment, this package only supports US cities only. There are plans to extend this in the next version.
 
 ## Usage
 
