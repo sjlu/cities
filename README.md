@@ -1,5 +1,7 @@
 # Cities
 
+[![Circle CI](https://circleci.com/gh/sjlu/cities.svg?style=svg)](https://circleci.com/gh/sjlu/cities)
+
 Cities is an easy to use Node.js library to allow you to lookup a city by it's zipcode or by a set
 of GPS coordinates (reverse geocoding).
 
