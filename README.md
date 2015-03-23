@@ -22,6 +22,7 @@ Easy. Require `"cities": "1.x"` in `package.json`, then do `npm install`.
     var cities = require('cities');
     cities.gps_lookup(lat, lng);
     cities.zip_lookup(zipcode);
+    cities.find({state_abbr: 'CO'}) // returns an array of cities in Colorado. 
 
 ## Sample
 

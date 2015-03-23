@@ -5,7 +5,7 @@ describe('gps_lookup()', function()
 {
    it('should give me 07946 based on exact location', function()
    {
-      var hometown = cities.gps_lookup(40.672823, -74.52011); 
+      var hometown = cities.gps_lookup(40.672823, -74.52011);
       assert.equal(07946, hometown.zipcode);
    });
 });
@@ -16,5 +16,14 @@ describe ('zip_lookup()', function()
    {
       var hometown = cities.zip_lookup(07946);
       assert.equal(07946, hometown.zipcode);
+   });
+});
+
+describe ('find()', function()
+{
+   it('should give me 07946 based on object with zipcode', function()
+   {
+      var hometown = cities.find({zipcode: "07946"});
+      assert.equal("07946", hometown.zipcode);
    });
 });

@@ -1,5 +1,6 @@
-var fs = require('fs');
-var locations = JSON.parse(fs.readFileSync(__dirname + '/locations.json', 'ascii'));
+var locations = require('./locations');
+var filter = require('lodash.filter');
+var padLeft = require('lodash.padleft');
 
 var R = 6371;
 var haversine = function(lat1, lon1, lat2, lon2)
@@ -10,32 +11,35 @@ var haversine = function(lat1, lon1, lat2, lon2)
    lat2 = lat2 * (Math.PI / 180);
 
    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-           Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+           Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2);
+   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
    var d = R * c;
 
    return d;
 };
 
+var pad = function(num) {
+ return padLeft(String(num), 5, 0)
+}
+
+var findLoc = exports.find = function(query) {
+  var results = filter(locations, query);
+  return results.length === 1? results[0] : results
+}
+
 exports.zip_lookup = function(zip)
 {
-   for (var i = 0; i < locations.length; i++)
-   {
-      if (locations[i].zipcode == zip)
-         return locations[i];
-   }
-
-   return null;
+  return findLoc({zipcode: pad(zip)});
 };
 
 exports.gps_lookup = function(lat, lng)
 {
    var min_distance = 9999999999; // simulate infinity
    var min_location = {};
-   
+
    for (var i = 0; i < locations.length; i++)
    {
-      var distance = haversine(lat, lng, locations[i].latitude, locations[i].longitude); 
+      var distance = haversine(lat, lng, locations[i].latitude, locations[i].longitude);
 
       if (distance < min_distance)
       {
