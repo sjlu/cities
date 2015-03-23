@@ -1,8 +1,10 @@
 # Cities
 
-Cities is an easy to use Node.js library to allow you to lookup a city by it's zipcode or by a set of GPS coordinates (reverse geocoding).
+Cities is an easy to use Node.js library to allow you to lookup a city by it's zipcode or by a set
+of GPS coordinates (reverse geocoding).
 
-At the moment, this package only supports US cities only. There are plans to extend this in the next version.
+At the moment, this package only supports US cities only. There are plans to extend this in the
+next version.
 
 ## Usage
 
@@ -10,20 +12,45 @@ At the moment, this package only supports US cities only. There are plans to ext
 
 Like any node.js application.
 
-    npm install
-    node server.js
+```
+npm install
+node server.js
+```
 
-You can then visit `http://localhost:4000` with the endpoints `/gps/:lat/:lng` or `/zip/:zipcode` to get locations.
+You can then visit `http://localhost:4000` with the endpoints `/gps/:lat/:lng` or `/zip/:zipcode`
+to get locations.
 
-### Module
+### Install
 
-Easy. Require `"cities": "1.x"` in `package.json`, then do `npm install`.
+```
+npm install cities --save
+```
 
-    var cities = require('cities');
-    cities.gps_lookup(lat, lng);
-    cities.zip_lookup(zipcode);
+### Usage
 
-## Sample
+```
+var cities = require('cities');
+```
+
+#### Lookup by GPS coordinates
+
+```
+cities.gps_lookup(lat, lng);
+```
+
+#### Lookup by zipcode
+
+```
+cities.zip_lookup(zipcode);
+```
+
+#### Lookup by state
+
+```
+cities.findByState('NJ')
+```
+
+### Sample Response
 
 A sample response or object that this module returns looks like this.
 
