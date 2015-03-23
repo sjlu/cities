@@ -1,49 +1,50 @@
 var fs = require('fs');
-var locations = JSON.parse(fs.readFileSync(__dirname + '/locations.json', 'ascii'));
+var locations = require('./locations');
+var haversine = require('haversine');
+var _ = require('lodash');
 
-var R = 6371;
-var haversine = function(lat1, lon1, lat2, lon2)
-{
-   var dLat = (lat2-lat1) * (Math.PI / 180);
-   var dLon = (lon2-lon1) * (Math.PI / 180);
-   lat1 = lat1 * (Math.PI / 180);
-   lat2 = lat2 * (Math.PI / 180);
+var find = exports.find = function(key, value) {
+  for (var i = 0; i < locations.length; i++) {
+    if (locations[i] && locations[i][key] == value) {
+      return locations[i];
+    }
+  }
+}
 
-   var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-           Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2); 
-   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-   var d = R * c;
+var findAll = exports.findAll = function(key, value) {
+  return _.filter(locations, function(location) {
+    return location[key] === value;
+  });
+}
 
-   return d;
+exports.zip_lookup = exports.zipLookup = function(zipcode) {
+  zipcode = _.padLeft(zipcode, 5, 0);
+  return find("zipcode", zipcode);
 };
 
-exports.zip_lookup = function(zip)
-{
-   for (var i = 0; i < locations.length; i++)
-   {
-      if (locations[i].zipcode == zip)
-         return locations[i];
-   }
+exports.gps_lookup = exports.gpsLookup = function(latitude, longitude) {
+  var minDistance = Infinity; // simulate infinity
+  var minLocation = {};
 
-   return null;
+  var start = {
+    latitude: latitude,
+    longitude: longitude
+  }
+
+  for (var i = 0; i < locations.length; i++) {
+    var distance = haversine(start, locations[i]);
+
+    if (distance < minDistance) {
+      minLocation = locations[i];
+      minDistance = distance;
+    }
+  }
+
+  minLocation.distance = minDistance;
+  return minLocation;
 };
 
-exports.gps_lookup = function(lat, lng)
-{
-   var min_distance = 9999999999; // simulate infinity
-   var min_location = {};
-   
-   for (var i = 0; i < locations.length; i++)
-   {
-      var distance = haversine(lat, lng, locations[i].latitude, locations[i].longitude); 
-
-      if (distance < min_distance)
-      {
-         min_location = locations[i];
-         min_distance = distance;
-      }
-   }
-
-   min_location.distance = min_distance;
-   return min_location;
-};
+exports.findByState = function(state) {
+  state = state.toUpperCase()
+  return findAll("state_abbr", state)
+}

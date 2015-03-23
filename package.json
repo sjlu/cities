@@ -4,7 +4,9 @@
   "version": "1.0.6",
   "author": "Steven Lu <slu@me.com>",
   "dependencies": {
-    "express": "3.x"
+    "express": "3.x",
+    "haversine": "^1.0.0",
+    "lodash": "^3.5.0"
   },
   "devDependencies": {
     "mocha": "1.8.x"
@@ -13,7 +15,7 @@
   "repository": "https://github.com/sjlu/cities",
   "scripts": {
     "start": "server.js",
-    "test": "make test"
+    "test": "mocha"
   },
   "engines": {
     "node": "0.8.x"
