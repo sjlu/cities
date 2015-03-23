@@ -15,7 +15,7 @@ describe('zip_lookup()', function() {
   });
 });
 
-describe('findAll', function() {
+describe('findByState', function() {
   it('should give me a list of zipcodes', function() {
     var citiesFromZips = cities.findByState('NJ');
     assert.equal(Array.isArray(citiesFromZips), true);
