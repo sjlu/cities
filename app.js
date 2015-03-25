@@ -3,19 +3,9 @@ var locations = require('./locations');
 var haversine = require('haversine');
 var _ = require('lodash');
 
-var find = exports.find = function(key, value) {
-  for (var i = 0; i < locations.length; i++) {
-    if (locations[i] && locations[i][key] == value) {
-      return locations[i];
-    }
-  }
-}
+var find = exports.find = _.partial(_.find, locations);
 
-var findAll = exports.findAll = function(key, value) {
-  return _.filter(locations, function(location) {
-    return location[key] === value;
-  });
-}
+var filter = exports.filter = _.partial(_.filter, locations);
 
 exports.zip_lookup = exports.zipLookup = function(zipcode) {
   zipcode = _.padLeft(zipcode, 5, 0);
@@ -46,5 +36,5 @@ exports.gps_lookup = exports.gpsLookup = function(latitude, longitude) {
 
 exports.findByState = function(state) {
   state = state.toUpperCase()
-  return findAll("state_abbr", state)
+  return filter({state_abbr: state})
 }
