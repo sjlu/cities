@@ -1,7 +1,7 @@
 {
   "name": "cities",
   "description": "Lookup cities based on zipcodes or GPS coordinates.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Steven Lu <slu@me.com>",
   "dependencies": {
     "express": "3.x",
@@ -16,9 +16,6 @@
   "scripts": {
     "start": "server.js",
     "test": "mocha"
-  },
-  "engines": {
-    "node": "0.8.x"
   },
   "subdomain": "sjlu.cities"
 }

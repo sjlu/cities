@@ -22,3 +22,11 @@ describe('findByState', function() {
     assert.equal(citiesFromZips.length > 0, true);
   })
 })
+
+describe('findByCityAndState', function() {
+  it('should find me a city', function() {
+    var place = cities.findByCityAndState('millington', 'nj');
+    assert.equal(place.city, 'Millington')
+    assert.equal(place.state, 'New Jersey')
+  })
+})
