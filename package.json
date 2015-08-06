@@ -8,12 +8,17 @@
     "lodash": "^3.5.0"
   },
   "devDependencies": {
-    "mocha": "1.8.x"
+    "bluebird": "^2.9.34",
+    "dotenv": "^1.2.0",
+    "mocha": "1.8.x",
+    "request": "^2.60.0",
+    "xml2js": "^0.4.9"
   },
   "main": "app.js",
   "repository": "https://github.com/sjlu/cities",
   "scripts": {
     "start": "server.js",
     "test": "mocha"
-  }
+  },
+  "license": "MIT"
 }
