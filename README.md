@@ -52,6 +52,21 @@ cities.zip_lookup(zipcode);
 cities.findByState('NJ')
 ```
 
+#### Find in sentence
+This function will analyze a given sentence, extract a city, state or zip code and return an array of results.
+
+```
+cities.findInSentence('Traveling to Los Angeles')
+cities.findInSentence('Find grocery store 60601')
+cities.findInSentence('We got lost in Montana')
+```
+
+Sometimes your sentence could match with many results. Just add a limit argument to the function call.
+
+```
+cities.findInSentence('Traveling to Los Angeles', 2)
+```
+
 ### Sample Response
 
 A sample response or object that this module returns looks like this.
@@ -64,6 +79,8 @@ A sample response or object that this module returns looks like this.
         city: "Millington",
         state: "New Jersey"
     }
+
+When using the ```findInSentence``` function this module will return an array of objects instead. 
 
 ## License
 

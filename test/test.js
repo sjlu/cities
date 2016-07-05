@@ -30,3 +30,23 @@ describe('findByCityAndState', function() {
     assert.equal(place.state, 'New Jersey')
   })
 })
+
+describe('findInSentence', function() {
+  it('should return two results containing city name', function() {
+    var places = cities.findInSentence('Traveling to Los Angeles', 2);
+    assert.equal(places[0].city, 'Los Angeles')
+    assert.equal(places[1].city, 'Los Angeles')
+    assert.equal(places.length, 2)
+  })
+
+  it('should find me a city from a zip code', function() {
+    var place = cities.findInSentence('Find grocery store 60601')[0];
+    assert.equal(place.city, 'Chicago')
+    assert.equal(place.state, 'Illinois')
+  })
+
+  it('should find me a city from a state name', function() {
+    var place = cities.findInSentence('We got lost in Montana')[0];
+    assert.equal(place.state, 'Montana')
+  })
+})
