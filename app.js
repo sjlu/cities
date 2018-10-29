@@ -6,8 +6,10 @@ var find = exports.find = _.partial(_.find, locations);
 var filter = exports.filter = _.partial(_.filter, locations);
 
 exports.zip_lookup = exports.zipLookup = function(zipcode) {
-  zipcode = _.padLeft(zipcode, 5, 0);
-  return find("zipcode", zipcode);
+  zipcode = _.padStart(zipcode, 5, 0);
+  return find({
+    zipcode: zipcode
+  });
 };
 
 exports.gps_lookup = exports.gpsLookup = function(latitude, longitude) {
@@ -34,7 +36,9 @@ exports.gps_lookup = exports.gpsLookup = function(latitude, longitude) {
 
 exports.findByState = function(state) {
   state = state.toUpperCase()
-  return filter({state_abbr: state})
+  return filter({
+    state_abbr: state
+  })
 }
 
 exports.findByCityAndState = function(city, state) {
