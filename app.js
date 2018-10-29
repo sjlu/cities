@@ -1,4 +1,3 @@
-var fs = require('fs');
 var locations = require('./locations');
 var haversine = require('haversine');
 var _ = require('lodash');
